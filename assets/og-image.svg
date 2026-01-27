@@ -1,0 +1,19 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Future Laboratório - Exames Clínicos</title>
+  <desc id="desc">Imagem de compartilhamento com fundo vinho e destaque para o Future Laboratório.</desc>
+  <rect width="1200" height="630" fill="#8B0000"/>
+  <rect x="80" y="80" width="1040" height="470" rx="36" fill="#FFFFFF"/>
+  <text x="160" y="240" fill="#8B0000" font-family="Exo, Arial, sans-serif" font-size="56" font-weight="700">
+    Future Laboratório
+  </text>
+  <text x="160" y="310" fill="#333333" font-family="Roboto, Arial, sans-serif" font-size="32" font-weight="400">
+    Precisão e confiança em exames clínicos
+  </text>
+  <text x="160" y="380" fill="#333333" font-family="Roboto, Arial, sans-serif" font-size="28" font-weight="400">
+    Palmeira dos Índios, AL • 12 anos
+  </text>
+  <rect x="160" y="430" width="260" height="60" rx="30" fill="#8B0000"/>
+  <text x="200" y="470" fill="#FFFFFF" font-family="Roboto, Arial, sans-serif" font-size="26" font-weight="600">
+    Agende via WhatsApp
+  </text>
+</svg>

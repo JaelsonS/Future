@@ -1,0 +1,20 @@
+<svg width="960" height="720" viewBox="0 0 960 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Equipe do Future Laboratório</title>
+  <desc id="desc">Ilustração abstrata com formas modernas em tons vinho e branco.</desc>
+  <rect width="960" height="720" rx="48" fill="#FFF5F5"/>
+  <rect x="80" y="96" width="800" height="528" rx="40" fill="white"/>
+  <rect x="120" y="144" width="260" height="40" rx="20" fill="#8B0000" fill-opacity="0.15"/>
+  <rect x="120" y="200" width="520" height="16" rx="8" fill="#E6E6E6"/>
+  <rect x="120" y="230" width="460" height="16" rx="8" fill="#E6E6E6"/>
+  <circle cx="220" cy="380" r="80" fill="#8B0000" fill-opacity="0.1"/>
+  <circle cx="220" cy="360" r="36" fill="#8B0000"/>
+  <rect x="180" y="410" width="80" height="60" rx="24" fill="#8B0000"/>
+  <circle cx="480" cy="380" r="80" fill="#8B0000" fill-opacity="0.1"/>
+  <circle cx="480" cy="360" r="36" fill="#8B0000"/>
+  <rect x="440" y="410" width="80" height="60" rx="24" fill="#8B0000"/>
+  <circle cx="740" cy="380" r="80" fill="#8B0000" fill-opacity="0.1"/>
+  <circle cx="740" cy="360" r="36" fill="#8B0000"/>
+  <rect x="700" y="410" width="80" height="60" rx="24" fill="#8B0000"/>
+  <rect x="120" y="520" width="600" height="18" rx="9" fill="#EFEFEF"/>
+  <rect x="120" y="550" width="480" height="18" rx="9" fill="#EFEFEF"/>
+</svg>
