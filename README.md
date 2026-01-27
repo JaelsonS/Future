@@ -15,8 +15,7 @@ Site desenvolvido para o Future Laboratório de Palmeira dos Índios, AL, com fo
 - Google Fonts, Font Awesome
 
 ## Acesso
-- **Site:** [inserir URL após deploy]
-- **Repositório:** [link do GitHub]
+- **Site:** [https://future-taupe-nine.vercel.app/]
 
 ## Autor
 Desenvolvido como projeto piloto para estudos em front-end profissional.
