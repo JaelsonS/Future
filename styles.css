@@ -428,6 +428,138 @@ ul {
   font-size: 1.5rem;
 }
 
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 80;
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.modal-dialog {
+  position: relative;
+  width: min(92vw, 520px);
+  background: var(--secondary);
+  border-radius: 24px;
+  padding: 32px 28px;
+  box-shadow: var(--shadow);
+  z-index: 1;
+}
+
+.modal-dialog h2 {
+  font-family: "Exo", sans-serif;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.modal-subtitle {
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background: rgba(139, 0, 0, 0.08);
+  color: var(--primary);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.appointment-form {
+  display: grid;
+  gap: 16px;
+}
+
+.form-row {
+  display: grid;
+  gap: 6px;
+}
+
+.appointment-form label {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.appointment-form input,
+.appointment-form select,
+.appointment-form textarea {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e5e5;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: #fff;
+}
+
+.appointment-form input:focus,
+.appointment-form select:focus,
+.appointment-form textarea:focus {
+  outline: 2px solid rgba(139, 0, 0, 0.2);
+  border-color: var(--primary);
+}
+
+.appointment-form textarea {
+  resize: vertical;
+}
+
+.form-status {
+  min-height: 20px;
+  font-size: 0.95rem;
+  color: var(--primary);
+}
+
+.form-status.error {
+  color: #b00020;
+}
+
+.form-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  max-width: 360px;
+  background: var(--primary);
+  color: var(--secondary);
+  padding: 14px 18px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: 0.2s ease;
+  z-index: 90;
+}
+
+.form-toast.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
 @media (max-width: 960px) {
   .header-inner {
     flex-wrap: wrap;
@@ -485,5 +617,11 @@ ul {
   .whatsapp-float {
     right: 16px;
     bottom: 16px;
+  }
+
+  .form-toast {
+    left: 16px;
+    right: 16px;
+    max-width: unset;
   }
 }

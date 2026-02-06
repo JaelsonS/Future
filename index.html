@@ -102,10 +102,10 @@
             </p>
             <div class="hero-actions">
               <a
-                class="btn primary"
+                class="btn primary js-appointment-trigger"
                 href="https://wa.me/5582999534040"
-                aria-label="Agendar exame via WhatsApp"
-                >Agendar Exame</a
+                aria-label="Solicitar agendamento"
+                >Solicitar Agendamento</a
               >
               <a class="btn secondary" href="#servicos">Ver exames</a>
             </div>
@@ -241,10 +241,10 @@
               </li>
             </ul>
             <a
-              class="btn primary"
+              class="btn primary js-appointment-trigger"
               href="https://wa.me/5582999534040"
-              aria-label="Agendar exame no WhatsApp"
-              >Agendar Exame</a
+              aria-label="Solicitar agendamento"
+              >Solicitar Agendamento</a
             >
           </div>
           <div class="map-wrapper" aria-label="Mapa de localização">
@@ -312,6 +312,87 @@
     >
       <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
     </a>
+
+    <div
+      class="modal"
+      id="appointment-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="appointment-title"
+      aria-hidden="true"
+    >
+      <div class="modal-overlay" data-modal-close></div>
+      <div class="modal-dialog" role="document">
+        <button class="modal-close" type="button" aria-label="Fechar" data-modal-close>
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+        <h2 id="appointment-title">Solicitar agendamento</h2>
+        <p class="modal-subtitle">
+          Preencha os dados abaixo para solicitar sua consulta ou exame. Retornaremos em breve.
+        </p>
+        <form id="appointment-form" class="appointment-form" novalidate>
+          <div class="form-row">
+            <label for="appointment-name">Nome completo *</label>
+            <input
+              id="appointment-name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              required
+              placeholder="Digite seu nome completo"
+            />
+          </div>
+          <div class="form-row">
+            <label for="appointment-phone">Telefone *</label>
+            <input
+              id="appointment-phone"
+              name="phone"
+              type="tel"
+              autocomplete="tel"
+              required
+              placeholder="(00) 00000-0000"
+            />
+          </div>
+          <div class="form-row">
+            <label for="appointment-email">Email</label>
+            <input
+              id="appointment-email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="voce@email.com"
+            />
+          </div>
+          <div class="form-row">
+            <label for="appointment-type">Tipo de atendimento *</label>
+            <select id="appointment-type" name="type" required>
+              <option value="consulta">Consulta</option>
+              <option value="exame">Exame</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="appointment-notes">Observações</label>
+            <textarea
+              id="appointment-notes"
+              name="notes"
+              rows="3"
+              placeholder="Conte-nos detalhes importantes"
+            ></textarea>
+          </div>
+          <input type="hidden" id="appointment-clinic" name="clinic_id" value="" />
+          <p class="form-status" id="appointment-status" role="status" aria-live="polite"></p>
+          <button class="btn primary" type="submit">Enviar pedido</button>
+        </form>
+      </div>
+    </div>
+
+    <div
+      class="form-toast"
+      id="form-toast"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
 
     <script type="application/ld+json">
       {
