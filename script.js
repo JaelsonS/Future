@@ -37,6 +37,7 @@ sectionLinks.forEach((link) => {
 
 // Aqui estou integrando com o sistema SaaSude usando o ID da clinica (MayaVida).
 const CLINIC_ID = "69852d500189392d41556863";
+const API_BASE = "https://saasude1-0.onrender.com";
 
 const appointmentTriggers = document.querySelectorAll(".js-appointment-trigger");
 const appointmentModal = document.getElementById("appointment-modal");
@@ -164,22 +165,25 @@ if (appointmentForm) {
 
     const fields = appointmentForm.elements;
     const payload = {
-      clinic_id: CLINIC_ID,
-      name: fields["name"].value.trim(),
+      clinicId: CLINIC_ID,
+      patientName: fields["name"].value.trim(),
       phone: fields["phone"].value.trim(),
-      email: fields["email"].value.trim(),
-      type: fields["type"].value,
-      notes: fields["notes"].value.trim(),
+      email: fields["email"].value.trim() || undefined,
+      requestType: fields["type"].value.toUpperCase(),
+      notes: fields["notes"].value.trim() || undefined,
     };
 
     try {
-      const response = await fetch("/public/appointments/request", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      const response = await fetch(
+        `${API_BASE}/api/public/appointment-requests`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("request-failed");
