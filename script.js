@@ -164,13 +164,29 @@ if (appointmentForm) {
     }
 
     const fields = appointmentForm.elements;
+    const preferredDate = fields["preferred_date"].value.trim();
+    const preferredTime = fields["preferred_time"].value.trim();
+    let notes = fields["notes"].value.trim();
+
+    const preferredParts = [];
+    if (preferredDate) {
+      preferredParts.push(`Data desejada: ${preferredDate}`);
+    }
+    if (preferredTime) {
+      preferredParts.push(`Horario desejado: ${preferredTime}`);
+    }
+    if (preferredParts.length) {
+      const preferredText = preferredParts.join(" • ");
+      notes = notes ? `${notes}\n${preferredText}` : preferredText;
+    }
+
     const payload = {
       clinicId: CLINIC_ID,
       patientName: fields["name"].value.trim(),
       phone: fields["phone"].value.trim(),
       email: fields["email"].value.trim() || undefined,
       requestType: fields["type"].value.toUpperCase(),
-      notes: fields["notes"].value.trim() || undefined,
+      notes: notes || undefined,
     };
 
     try {
