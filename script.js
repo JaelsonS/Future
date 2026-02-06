@@ -35,7 +35,8 @@ sectionLinks.forEach((link) => {
   });
 });
 
-const CLINIC_ID = 12;
+// Aqui estou integrando com o sistema SaaSude usando o ID da clinica (MayaVida).
+const CLINIC_ID = "69852d500189392d41556863";
 
 const appointmentTriggers = document.querySelectorAll(".js-appointment-trigger");
 const appointmentModal = document.getElementById("appointment-modal");
