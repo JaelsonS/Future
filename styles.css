@@ -454,10 +454,15 @@ ul {
 .modal-dialog {
   position: relative;
   width: min(92vw, 520px);
+  max-height: 90vh;
   background: var(--secondary);
   border-radius: 24px;
   padding: 32px 28px;
   box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: auto;
   z-index: 1;
 }
 
@@ -490,6 +495,9 @@ ul {
 .appointment-form {
   display: grid;
   gap: 16px;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
 }
 
 .form-row {
@@ -623,5 +631,9 @@ body.modal-open {
     left: 16px;
     right: 16px;
     max-width: unset;
+  }
+
+  .modal-dialog {
+    max-height: 80vh;
   }
 }
