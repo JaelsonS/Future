@@ -36,7 +36,7 @@ sectionLinks.forEach((link) => {
 });
 
 // Aqui estou integrando com o sistema SaaSude usando o ID da clinica (MayaVida).
-const CLINIC_ID = "69852d500189392d41556863";
+const CLINIC_ID = "6988641c5d8c5bb95e9bb119";
 const API_BASE = "https://saasude1-0.onrender.com";
 
 const appointmentTriggers = document.querySelectorAll(".js-appointment-trigger");
