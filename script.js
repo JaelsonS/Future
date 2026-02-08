@@ -1,3 +1,35 @@
+
+// @ts-nocheck
+
+/**
+ * =========================================================
+ * SaaSude – Integração de Landing Page (Leads / Agendamentos)
+ * =========================================================
+ *
+ * Este script é reutilizável para qualquer clínica.
+ * Para novas integrações, alterar APENAS:
+ *  - clinicId
+ *  - integrationToken
+ *
+ * Nunca usar token de login (email/senha) aqui.
+ * O token de integração tem escopo limitado e é seguro
+ * para uso em landing pages públicas.
+ */
+
+/* =========================================================
+ * CONFIGURAÇÃO ÚNICA DA CLÍNICA
+ * ======================================================= */
+
+const SAASUDE_CONFIG = {
+  clinicId: "6988641c5d8c5bb95e9bb119",
+  integrationToken: "COLE_AQUI_O_TOKEN_DE_INTEGRACAO", // ex: saasude_live_xxx
+  apiBase: "https://saasude1-0.onrender.com"
+};
+
+/* =========================================================
+ * MENU MOBILE / NAVEGAÇÃO
+ * ======================================================= */
+
 const navToggle = document.querySelector(".nav-toggle");
 const navList = document.querySelector(".nav-list");
 
@@ -16,6 +48,10 @@ if (navToggle && navList) {
   });
 }
 
+/* =========================================================
+ * SCROLL SUAVE E ACESSIBILIDADE
+ * ======================================================= */
+
 const focusable = "a, button, input, textarea, select";
 const sectionLinks = document.querySelectorAll("a[href^='#']");
 
@@ -23,6 +59,7 @@ sectionLinks.forEach((link) => {
   link.addEventListener("click", (event) => {
     const targetId = link.getAttribute("href");
     if (!targetId || targetId === "#") return;
+
     const target = document.querySelector(targetId);
     if (!target) return;
 
@@ -35,9 +72,9 @@ sectionLinks.forEach((link) => {
   });
 });
 
-// Aqui estou integrando com o sistema SaaSude usando o ID da clinica (MayaVida).
-const CLINIC_ID = "6988641c5d8c5bb95e9bb119";
-const API_BASE = "https://saasude1-0.onrender.com";
+/* =========================================================
+ * MODAL DE AGENDAMENTO
+ * ======================================================= */
 
 const appointmentTriggers = document.querySelectorAll(".js-appointment-trigger");
 const appointmentModal = document.getElementById("appointment-modal");
@@ -55,13 +92,14 @@ const getFocusableModalElements = () => {
     appointmentModal.querySelectorAll(
       "a, button, input, textarea, select, [tabindex]:not([tabindex='-1'])"
     )
-  ).filter((element) => !element.hasAttribute("disabled"));
+  ).filter((el) => !el.hasAttribute("disabled"));
 };
 
 const showToast = (message) => {
   if (!toast) return;
   toast.textContent = message;
   toast.classList.add("visible");
+
   if (toastTimeout) clearTimeout(toastTimeout);
   toastTimeout = setTimeout(() => {
     toast.classList.remove("visible");
@@ -70,13 +108,14 @@ const showToast = (message) => {
 
 const openModal = () => {
   if (!appointmentModal) return;
+
   lastFocusedElement = document.activeElement;
   appointmentModal.classList.add("active");
   appointmentModal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
 
   if (appointmentClinic) {
-    appointmentClinic.value = String(CLINIC_ID);
+    appointmentClinic.value = SAASUDE_CONFIG.clinicId;
   }
 
   if (appointmentStatus) {
@@ -92,9 +131,11 @@ const openModal = () => {
 
 const closeModal = () => {
   if (!appointmentModal) return;
+
   appointmentModal.classList.remove("active");
   appointmentModal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("modal-open");
+
   if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
     lastFocusedElement.focus();
   }
@@ -109,11 +150,8 @@ if (appointmentTriggers.length && appointmentModal) {
   });
 
   appointmentModal.addEventListener("click", (event) => {
-    const target = event.target;
-    const closeTrigger = target ? target.closest("[data-modal-close]") : null;
-    if (closeTrigger) {
-      closeModal();
-    }
+    const closeTrigger = event.target.closest("[data-modal-close]");
+    if (closeTrigger) closeModal();
   });
 
   document.addEventListener("keydown", (event) => {
@@ -130,18 +168,22 @@ if (appointmentTriggers.length && appointmentModal) {
     const focusableElements = getFocusableModalElements();
     if (!focusableElements.length) return;
 
-    const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
+    const first = focusableElements[0];
+    const last = focusableElements[focusableElements.length - 1];
 
-    if (event.shiftKey && document.activeElement === firstElement) {
+    if (event.shiftKey && document.activeElement === first) {
       event.preventDefault();
-      lastElement.focus();
-    } else if (!event.shiftKey && document.activeElement === lastElement) {
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
       event.preventDefault();
-      firstElement.focus();
+      first.focus();
     }
   });
 }
+
+/* =========================================================
+ * ENVIO DO FORMULÁRIO (LEAD / PEDIDO DE AGENDAMENTO)
+ * ======================================================= */
 
 if (appointmentForm) {
   appointmentForm.addEventListener("submit", async (event) => {
@@ -164,40 +206,39 @@ if (appointmentForm) {
     }
 
     const fields = appointmentForm.elements;
-    const preferredDate = fields["preferred_date"].value.trim();
-    const preferredTime = fields["preferred_time"].value.trim();
-    let notes = fields["notes"].value.trim();
+    const preferredDate = fields["preferred_date"]?.value.trim();
+    const preferredTime = fields["preferred_time"]?.value.trim();
+    let notes = fields["notes"]?.value.trim() || "";
 
     const preferredParts = [];
-    if (preferredDate) {
-      preferredParts.push(`Data desejada: ${preferredDate}`);
-    }
-    if (preferredTime) {
-      preferredParts.push(`Horario desejado: ${preferredTime}`);
-    }
+    if (preferredDate) preferredParts.push(`Data desejada: ${preferredDate}`);
+    if (preferredTime) preferredParts.push(`Horário desejado: ${preferredTime}`);
+
     if (preferredParts.length) {
       const preferredText = preferredParts.join(" • ");
       notes = notes ? `${notes}\n${preferredText}` : preferredText;
     }
 
     const payload = {
-      clinicId: CLINIC_ID,
+      clinicId: SAASUDE_CONFIG.clinicId,
       patientName: fields["name"].value.trim(),
       phone: fields["phone"].value.trim(),
       email: fields["email"].value.trim() || undefined,
       requestType: fields["type"].value.toUpperCase(),
-      notes: notes || undefined,
+      notes: notes || undefined
     };
 
     try {
       const response = await fetch(
-        `${API_BASE}/api/public/appointment-requests`,
+        `${SAASUDE_CONFIG.apiBase}/api/public/appointment-requests`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            // Token de integração (escopo limitado)
+            "Authorization": `Bearer ${SAASUDE_CONFIG.integrationToken}`
           },
-          body: JSON.stringify(payload),
+          body: JSON.stringify(payload)
         }
       );
 
@@ -208,10 +249,12 @@ if (appointmentForm) {
       showToast(
         "Pedido enviado com sucesso. A clínica entrará em contacto para confirmar o agendamento."
       );
+
       appointmentForm.reset();
       if (appointmentClinic) {
-        appointmentClinic.value = String(CLINIC_ID);
+        appointmentClinic.value = SAASUDE_CONFIG.clinicId;
       }
+
       closeModal();
     } catch (error) {
       if (appointmentStatus) {
