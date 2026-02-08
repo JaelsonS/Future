@@ -11,9 +11,6 @@
  *  - clinicId
  *  - integrationToken
  *
- * Nunca usar token de login (email/senha) aqui.
- * O token de integração tem escopo limitado e é seguro
- * para uso em landing pages públicas.
  */
 
 /* =========================================================
