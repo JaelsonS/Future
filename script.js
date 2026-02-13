@@ -19,8 +19,8 @@
 
 const SAASUDE_CONFIG = {
   clinicId: "698cc0d6ed6d3a9e37669076",
-  integrationToken: "lp_b3d21a0999ada85593e25a1339ad744d3474333d1abfe3f6cda97c31f494d24e", // ex: saasude_lp_xxx
-  apiBase: "https://saasude1-0.onrender.com, https://api.saasude.com/api" // URL da API (ajustar se necessário)
+  integrationToken: "lp_b3d21a0999ada85593e25a1339ad744d3474333d1abfe3f6cda97c31f494d24e", //lp_xxx
+  apiBase: "https://saasude1-0.onrender.com" // URL da API 
 };
 
 /* =========================================================
