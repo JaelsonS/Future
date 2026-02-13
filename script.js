@@ -18,9 +18,9 @@
  * ======================================================= */
 
 const SAASUDE_CONFIG = {
-  clinicId: "6988641c5d8c5bb95e9bb119",
-  integrationToken: "lp_bd6f9b105d1621c500ae7134bcb5892a9cc735d9e217291a87f5c69a2cb2bf6f", // ex: saasude_lp_xxx
-  apiBase: "https://saasude1-0.onrender.com"
+  clinicId: "698cc0d6ed6d3a9e37669076",
+  integrationToken: "lp_b3d21a0999ada85593e25a1339ad744d3474333d1abfe3f6cda97c31f494d24e", // ex: saasude_lp_xxx
+  apiBase: "https://saasude1-0.onrender.com, https://api.saasude.com/api" // URL da API (ajustar se necessário)
 };
 
 /* =========================================================
