@@ -1,18 +1,3 @@
-
-// @ts-nocheck
-
-/**
- * =========================================================
- * SaaSude – Integração de Landing Page (Leads / Agendamentos)
- * =========================================================
- *
- * Este script é reutilizável para qualquer clínica.
- * Para novas integrações, alterar APENAS:
- *  - clinicId
- *  - integrationToken
- *
- */
-
 /* =========================================================
  * CONFIGURAÇÃO ÚNICA DA CLÍNICA
  * ======================================================= */
