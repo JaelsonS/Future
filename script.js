@@ -4,7 +4,7 @@
 
 const SAASUDE_CONFIG = {
   clinicId: "698cc0d6ed6d3a9e37669076",
-  integrationToken: "lp_b3d21a0999ada85593e25a1339ad744d3474333d1abfe3f6cda97c31f494d24e", //lp_xxx
+  integrationToken: "lp_0b1eb2a73dfea5dadf87ab8d41db447b79516dbb7507d6dfa8886d4c65a15f8f", //lp_xxx
   apiBase: "https://saasude1-0.onrender.com" // URL da API 
 };
 
