@@ -3,8 +3,8 @@
  * ======================================================= */
 
 const SAASUDE_CONFIG = {
-  clinicId: "698cc0d6ed6d3a9e37669076",
-  integrationToken: "lp_0b1eb2a73dfea5dadf87ab8d41db447b79516dbb7507d6dfa8886d4c65a15f8f", //lp_xxx
+  clinicId: "6991c48cdfda8671193f35e1",
+  integrationToken: "lp_f3fae9bc4163db0027e05aa2e331ca1f0f6059d88f2bb79c141f088d701e570f", //lp_xxx
   apiBase: "https://saasude1-0.onrender.com" // URL da API 
 };
 
